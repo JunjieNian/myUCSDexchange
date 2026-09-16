@@ -1,0 +1,27 @@
+name: Notify homepage of exchange notes update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request an immediate homepage sync
+        env:
+          GH_TOKEN: ${{ secrets.HOMEPAGE_DISPATCH_TOKEN }}
+        run: |
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            repos/JunjieNian/JunjieNian.github.io/dispatches \
+            -f event_type=exchange-notes-updated
+          echo "Requested a homepage sync for ${GITHUB_SHA}."
