@@ -21,7 +21,18 @@
         </div>
         <div class="sd-map__card" aria-labelledby="sd-map-place-name">
             <div class="sd-map__photo" hidden>
-                <span>照片待添加</span>
+                <p class="sd-map__photo-empty">暂无照片</p>
+                <div class="sd-map__photo-gallery" hidden>
+                    <button class="sd-map__photo-preview" type="button" aria-haspopup="dialog" aria-label="查看大图">
+                        <span class="sd-map__photo-image"></span>
+                        <span class="sd-map__photo-enlarge" aria-hidden="true">查看大图</span>
+                    </button>
+                    <div class="sd-map__photo-nav" role="group" aria-label="浏览照片" hidden>
+                        <button class="sd-map__photo-previous" type="button">上一张</button>
+                        <span class="sd-map__photo-count" aria-live="polite"></span>
+                        <button class="sd-map__photo-next" type="button">下一张</button>
+                    </div>
+                </div>
             </div>
             <div class="sd-map__details">
                 <h5 id="sd-map-place-name" aria-live="polite">UCSD Central Campus</h5>
@@ -41,6 +52,18 @@
         <span><i class="sd-map__key sd-map__key--walk" aria-hidden="true"></i> 步行段示意</span>
         <a href="https://data.sandiego.gov/datasets/gis-transit-routes/" target="_blank" rel="noopener">公交线路数据</a>
     </footer>
+    <dialog class="sd-map__photo-dialog" aria-labelledby="sd-map-photo-title">
+        <header class="sd-map__photo-dialog-header">
+            <h5 id="sd-map-photo-title"></h5>
+            <button class="sd-map__photo-close" type="button" autofocus>关闭</button>
+        </header>
+        <div class="sd-map__photo-image"></div>
+        <div class="sd-map__photo-nav" role="group" aria-label="浏览照片" hidden>
+            <button class="sd-map__photo-previous" type="button">上一张</button>
+            <span class="sd-map__photo-count" aria-live="polite"></span>
+            <button class="sd-map__photo-next" type="button">下一张</button>
+        </div>
+    </dialog>
     <noscript><p>启用 JavaScript 可查看地图和路线。</p></noscript>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
